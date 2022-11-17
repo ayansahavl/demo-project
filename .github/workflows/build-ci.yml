@@ -15,10 +15,7 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --release
-      - run: flutter build web
-      - name: Create a Release in GitHub
-        uses: ncipollo/release-action@v1
+      - uses: actions/upload-artifact@v1
         with:
-          artifacts: "/build/app/outputs/apk/release/*.apk,/build/web"
-          tag: "release"
-          token: "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"
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
